@@ -1,0 +1,13 @@
+<div style="padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
+  <h2>Lista de Livros</h2>
+
+  <div *ngIf="listaDeLivros.length === 0" style="color: gray;">
+    Nenhum livro cadastrado ainda. Vá até o formulário acima e adicione um!
+  </div>
+
+  <ul>
+    <li *ngFor="let livro of listaDeLivros" style="margin-bottom: 10px; font-size: 18px;">
+      <strong>{{ livro.titulo }}</strong> - {{ livro.autor }} ({{ livro.ano }})
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,80 @@
+<div style="max-width: 800px; margin: 20px auto; font-family: sans-serif;">
+
+  <div style="background-color: #e3f2fd; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #90caf9;">
+    <p style="margin: 0; font-size: 16px; color: #0d47a1;">
+      Olá, meu nome é {{ nome }}, tenho {{ idade }} anos e curso {{ curso }}.
+    </p>
+  </div>
+
+  <div style="background-color: #e8f5e9; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #a5d6a7;">
+    <p style="margin: 0; font-size: 16px; color: #1b5e20;">
+      Produto: {{ produto }} | Total: {{ preco * quantidade | currency:'BRL':'symbol':'1.2-2' }}
+    </p>
+  </div>
+
+  <div style="background-color: #fff3e0; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #ffe0b2; text-align: center;">
+    <img [src]="imagemProduto" [alt]="descricaoImagem" style="border-radius: 8px; width: 150px; height: 150px; object-fit: cover;">
+  </div>
+
+  <div style="background-color: #f3e5f5; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #e1bee7; text-align: center;">
+    <button 
+      [disabled]="!formularioValido" 
+      [style.backgroundColor]="formularioValido ? '#28a745' : '#dc3545'" 
+      [style.opacity]="formularioValido ? '1' : '0.6'"
+      [style.cursor]="formularioValido ? 'pointer' : 'not-allowed'"
+      style="padding: 10px 20px; font-size: 16px; border-radius: 4px; border: none; color: white; font-weight: bold;">
+      {{ formularioValido ? 'Salvar (Habilitado)' : 'Salvar (Desabilitado)' }}
+    </button>
+  </div>
+
+  <div style="background-color: #fffde7; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #fff59d; text-align: center;">
+    <p style="margin: 0 0 10px 0; font-size: 18px; font-weight: bold; color: #f57f17;">
+      Quantidade: {{ contador }}
+    </p>
+    <button 
+      (click)="decrementar()" 
+      [disabled]="contador === 0"
+      style="padding: 8px 20px; font-size: 18px; border-radius: 4px; border: none; background-color: #dc3545; color: white; margin-right: 10px; cursor: pointer;">
+      -
+    </button>
+    <button 
+      (click)="incrementar()" 
+      style="padding: 8px 20px; font-size: 18px; border-radius: 4px; border: none; background-color: #28a745; color: white; cursor: pointer;">
+      +
+    </button>
+  </div>
+
+  <div style="background-color: #e0f2f1; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #b2dfdb; text-align: center;">
+    <input 
+      type="text" 
+      [(ngModel)]="nomeUsuario" 
+      style="padding: 8px 12px; font-size: 16px; border-radius: 4px; border: 1px solid #004d40; margin-bottom: 10px; width: 200px;">
+    <p style="margin: 0; font-size: 18px; font-weight: bold; color: #004d40;">
+      Olá, {{ nomeUsuario }}!
+    </p>
+  </div>
+
+  <div style="background-color: #efebe9; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #d7ccc8;">
+    <div style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;">
+      <input type="text" [(ngModel)]="produtoCad" placeholder="Produto" style="padding: 8px; font-size: 14px; flex: 1;">
+      <input type="number" [(ngModel)]="precoCad" placeholder="Preço" style="padding: 8px; font-size: 14px; flex: 1;">
+      <input type="number" [(ngModel)]="quantidadeCad" placeholder="Quantidade" style="padding: 8px; font-size: 14px; flex: 1;">
+    </div>
+    <div style="background-color: white; padding: 12px; border-radius: 6px; color: #3e2723;">
+      <p style="margin: 4px 0;"><strong>Produto:</strong> {{ produtoCad }}</p>
+      <p style="margin: 4px 0;"><strong>Preço:</strong> {{ precoCad | currency:'BRL':'symbol':'1.2-2' }}</p>
+      <p style="margin: 4px 0;"><strong>Quantidade:</strong> {{ quantidadeCad }}</p>
+      <p style="margin: 4px 0; font-size: 16px; font-weight: bold; color: #2e7d32;">
+        <strong>Total:</strong> {{ (precoCad * quantidadeCad) | currency:'BRL':'symbol':'1.2-2' }}
+      </p>
+    </div>
+  </div>
+
+  <h1 style="text-align: center; color: #333;">Meu Gerenciador de Livros 📚</h1>
+
+  <app-cad-livros></app-cad-livros>
+
+  <hr style="margin: 30px 0;">
+
+  <app-listagem></app-listagem>
+</div>
